@@ -1,9 +1,10 @@
 import { useToggle } from '../provider/context';
+import ButtonToggleDarkMode from '../../components/light_dark_button/button';
 
 export default function TopNavigation() {
   const { toggle } = useToggle();
   return (
-    <header className="bg-white h-16 items-center relative shadow w-full z-10 md:h-20">
+    <header className="bg-white dark:bg-gray-800 h-16 items-center relative shadow w-full z-10 md:h-20">
       <div className="flex flex-center flex-col h-full justify-center mx-auto px-3 relative">
         <div className="flex items-center pl-1 relative w-full sm:ml-0 sm:pr-2 lg:max-w-68">
           <div className="flex left-0 relative w-3/4">
@@ -13,27 +14,17 @@ export default function TopNavigation() {
                 aria-expanded="false"
                 aria-label="Toggle sidenav"
                 onClick={toggle}
-                className="text-4xl text-black focus:outline-none"
+                className="text-4xl text-black dark:text-gray-400 focus:outline-none"
               >
                 &#8801;
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-end ml-5 p-1 relative w-full sm:mr-0 sm:right-auto">
-            <a href="#" className="block pr-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 text-gray-600 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
-                  clipRule="evenodd"
-                />
-              </svg>
+          <div className="flex items-center  justify-end ml-5 p-1 relative w-full sm:mr-0 sm:right-auto">
+            <a href="#" className="block pr-5 ">
+              <ButtonToggleDarkMode />
             </a>
+
             <a href="#" className="block pr-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -8,40 +8,20 @@ import DocumentationIcon from './icons/documentation';
 
 const data = [
   {
-    title: 'Home',
+    title: 'Dashboard',
     icon: <HomeIcon />,
-    link: '/',
+    link: '/admin/dashboard',
   },
   {
-    title: 'Bills',
-    icon: <BillsIcon />,
-    link: '/admin/bills',
+    title: 'Users',
+    icon: <HomeIcon />,
+    link: '/admin/users',
   },
-  {
-    title: 'Applications',
-    icon: <ApplicationsIcon />,
-    link: '/admin/applications',
-  },
-  {
-    title: 'Monitoring',
-    icon: <MonitoringIcon />,
-    link: '/admin/monitoring',
-  },
-  {
-    title: 'Demographics',
-    icon: <DemographicsIcon />,
-    link: '/admin/demographics',
-  },
-  {
-    title: 'Analytics',
-    icon: <AnalyticsIcon />,
-    link: '/admin/analytics',
-  },
-  {
-    title: 'Documentation',
-    icon: <DocumentationIcon />,
-    link: '/admin/documentation',
-  },
+  // {
+  //   title: 'Keluar',
+  //   icon: <DocumentationIcon />,
+  //   link: '/admin/',
+  // },
 ];
 
 export default data;

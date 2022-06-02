@@ -1,11 +1,12 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import useSWR, { mutate } from 'swr';
-import { Button } from '../src/components/button';
-import { OutlinedButton } from '../src/components/outlinedButton';
-import { SearchBar } from '../src/components/searchBar';
-import Table from '../src/components/table';
-import DashboardLayout from '../src/dashboard/layout';
-import { destroy } from '../src/services/users';
+import { Button } from '../../../src/components/button';
+import { OutlinedButton } from '../../../src/components/outlinedButton';
+import { SearchBar } from '../../../src/components/searchBar';
+import Table from '../../../src/components/table';
+import DashboardLayout from '../../../src/dashboard/layout';
+import { destroy } from '../../../src/services/users';
 
 const style = {
   container: `flex flex-col flex-wrap sm:flex-row`,
@@ -14,10 +15,11 @@ const style = {
   pagination: `flex flex-row w-full px-4 py-4 text-sm text-purple-800 dark:text-purple-200`,
 };
 
-export default function HomePage() {
+export default function UsersTable() {
   const [pageIndex, setPageIndex] = useState(1);
   const [pageLimit, setPageLimit] = useState(5);
   const { data, error } = useSWR(`/users?limit=${pageLimit}&page=${pageIndex}`);
+  const router = useRouter();
 
   if (error) return 'An error has occured';
   // if (!data) return <DashboardLayout>Loading...</DashboardLayout>;
@@ -44,7 +46,11 @@ export default function HomePage() {
             <SearchBar hintText="Search..." name="_search" />
           </div>
           <div className={`ml-auto`}>
-            <Button color="primary" size="md">
+            <Button
+              color="primary"
+              size="md"
+              onClick={() => router.push(`/admin/users/create`)}
+            >
               Add +
             </Button>
           </div>
@@ -55,6 +61,12 @@ export default function HomePage() {
           <Table
             columns={cols}
             data={data ? data.data : []}
+            onView={(row) => {
+              router.push(`/admin/users/view/${row.original.id}`);
+            }}
+            onUpdate={(row) => {
+              router.push(`/admin/users/edit/${row.original.id}`);
+            }}
             onDelete={async (row) => {
               // remove row
               const tableData = [...data.data];

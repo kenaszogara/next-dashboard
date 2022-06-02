@@ -1,5 +1,10 @@
 import Content from '../../src/components/content';
+import DashboardLayout from '../../src/dashboard/layout';
 
 export default function ApplicationsPage() {
-  return <Content title="Applications" />;
+  return (
+    <DashboardLayout>
+      <Content title="Applications" />
+    </DashboardLayout>
+  );
 }
